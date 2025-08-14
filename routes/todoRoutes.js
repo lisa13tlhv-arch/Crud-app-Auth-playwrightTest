@@ -1,0 +1,19 @@
+import express from 'express';
+const router = express.Router();
+
+import {
+  addNewTodo,
+  getAllTodo,
+  completeTodo,
+  incompleteTodo,
+  deleteTodo,
+  editTodo,
+} from '../controller/todoController.js';
+
+// Todo Routes
+router.route('/').get(getAllTodo).post(addNewTodo);
+router.route('/:id').delete(deleteTodo).put(editTodo);
+router.route('/:id/complete').put(completeTodo);
+router.route('/:id/incomplete').put(incompleteTodo);
+
+export default router;
