@@ -8,7 +8,7 @@
 ### This website has been modified to be simplier than the original code written by the author for purpose of creating sample automation framework
 
 ### About Project
-This project is a fullstack CRUD application with login authentication built with React, Express, Nodejs, Mong0DB.
+This project is a CRUD application with login authentication built with React, Express, Nodejs, Mong0DB.
 
 ## Application Features
 - Login system
@@ -24,32 +24,8 @@ Login to the application with the below credentials.
 #### Live view of the application Demo can be found here- [Crud-App-Auth](https://crud-app-auth.netlify.app)
 
 ### Login Credentials: 
-##### Username: admin@example.com, 
-##### Password: yourpassword
-
-
-Login Page.
-
-![login](https://user-images.githubusercontent.com/26815113/155554852-693b31bf-82c0-4aa8-a06a-a89da24e6c12.PNG)
-
-
-
-Dashboard View
-
-![dashboard](https://user-images.githubusercontent.com/26815113/155554569-5bc11dc0-31e9-441a-a1f9-39b4c6752dfc.PNG)
-
-
-## How to use the application
-
-## Table of Contents
-- [Getting Started](#getting-started)
-	- [Tools Required](#tools-required)
-	- [Installation](#installation)
-- [Development](#development)
-- [Running the App](#running-the-app)
-- [Deployment](#deployment)
-- [Authors](#authors)
-- [License](#license)
+* Username: admin@example.com, 
+* Password: yourpassword
 
 ## Getting Started
 
@@ -108,28 +84,22 @@ cd client
  Run yarn or npm install from the root of the client folder.
 
 ### Development server
+#### 1. Install MongoDB and start DB server
+     * Open terminal and run 'mongod'
 
-#### Running the client App
+#### 2. Running the client App
 
-  ``` 
+  ``` Run terminal 
+          * Run 'npm install' in project folder/client  to install the dependency 
+          * Run 'npm run start' to start the client app
 Run yarn start or npm start from the root of the client folder to start the development server. 
 Go to http://localhost:3000 on your browser. Your app should be running.
 The app will automatically reload if you make changes to any of the source files.
   ```
 
-#### Running the Server
+#### 3. Running the backend Server
 - Open the project folder you cloned. 
-- Fill in the following credentials:
-- PROD_MONGO_URI=
-- JWT_SECRET=
-- EMAIL_SECRET=
-- NODE_ENV=
-- PROD_CLIENT=
-- PORT=
-- EMAIL=
-- PASS=
-
-Run 'npm install' from your terminal.
+Run 'npm install' in the project folder from your terminal.
 Then 'npm run start'. 
 Your backend server should start running on  port 5000.
 
