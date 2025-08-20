@@ -56,8 +56,3 @@ test.describe.serial('Create/Update/Delete TODOs function', () => {
     });
 }
 );
-
-test.describe.serial('Complete/Incomplete TODOs function', () => {
-    
-}
-);
