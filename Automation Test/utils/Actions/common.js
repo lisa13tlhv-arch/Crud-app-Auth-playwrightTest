@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { LoginLogoutVariables } = require('Variables/Login');
 const { LoginPage } = require('./Login');
-const { getTODOListAPI } = require('./CRUD_action');
+const { getTODOListAPI, getItemRowXpath } = require('./CRUD_action');
 const { DashboardElements } = require('Elements/Dashboard');
 let login
 
@@ -28,8 +28,20 @@ async function takeScreenshot(page, testInfo, title) {
   fs.writeFileSync(filePath, screenshotBuffer);
 }
 
+async function verifyStatusItemUpdated(page, title, isComplete) {
+   const data = await getTODOListAPI(page.request);
+    const matchedItem = data.find(item => item.title === title);
+  if(matchedItem.done === isComplete){
+     isComplete ? await page.isVisible(DashboardElements.todoCompleteItemRow.replace('$title', title)) :
+      await page.isVisible(DashboardElements.todoIncompleteItemRow.replace('$title', title));
+  }else{
+    throw new Error(`Item status not changes: expected ${isComplete}, but found ${matchedItem.done}`);
+  }
+}
+
 // Export the function for use in tests
 module.exports = {
   takeScreenshot,
-  setupTest
+  setupTest,
+  verifyStatusItemUpdated
 };

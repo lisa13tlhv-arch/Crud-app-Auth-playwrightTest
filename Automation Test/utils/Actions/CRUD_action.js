@@ -90,6 +90,20 @@ async function clickDeleteButton(page, title) {
     await page.click(deleteButton)
 };
 
+async function clickCompleteButton(page, title) {
+    const completeButton = await getItemButtonXpath(page, title, 'complete');
+    await page.waitForSelector(completeButton);
+    await page.locator(completeButton).scrollIntoViewIfNeeded();
+    await page.click(completeButton)
+};
+
+async function clickIncompleteButton(page, title) {
+    const incompleteButton = await getItemButtonXpath(page, title, 'incomplete');
+    await page.waitForSelector(incompleteButton);
+    await page.locator(incompleteButton).scrollIntoViewIfNeeded();
+    await page.click(incompleteButton)
+};
+
 async function verifyItemRemovedFromList(page, title) {
      const data = await getTODOListAPI(page.request);
     const matchedItem = data.find(item => item.title === title);
@@ -141,6 +155,8 @@ module.exports = {
     clickUpdateButton,
     updateItem,
     clickDeleteButton,
+    clickIncompleteButton,
+    clickCompleteButton,
     verifyItemRemovedFromList,
     getItemRowXpath,
     getItemButtonXpath

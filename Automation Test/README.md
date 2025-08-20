@@ -18,11 +18,13 @@ Automation Test/
 - Successful login with valid credentials
 - Login failure with invalid credentials
 - Logout functionality
+
 📋 Dashboard & CRUD Operations
 - Create new Todo items
 - Read and verify item details
 - Update existing items
 - Delete items and confirm removal
+
 🚫 Negative Test Cases
 - Attempting actions without authentication
 - Submitting empty or invalid form data

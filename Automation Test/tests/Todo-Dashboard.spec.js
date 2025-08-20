@@ -1,8 +1,9 @@
 import { test } from '@playwright/test';
 import { DashboardElements } from '../utils/Elements/Dashboard.js';
 import { DashboardVariables } from '../utils/Variables/Dashboard.js';
-import { takeScreenshot, setupTest } from '../utils/Actions/common.js';
-import { verifyAllItemsTODOListMatchingWithDB, verifyItemInTODOList, clickUpdateButton, updateItem,clickDeleteButton,verifyItemRemovedFromList } from '../utils/Actions/CRUD_action.js';
+import { takeScreenshot, setupTest,verifyStatusItemUpdated } from '../utils/Actions/common.js';
+import { verifyAllItemsTODOListMatchingWithDB, verifyItemInTODOList, clickUpdateButton
+    , updateItem,clickDeleteButton,verifyItemRemovedFromList, clickCompleteButton, clickIncompleteButton} from '../utils/Actions/CRUD_action.js';
 
 const updateText = 'Updated Todo';
 let newTitle, newDescription, updatedTitle, updatedDescription;
@@ -36,6 +37,18 @@ test.describe.serial('Create/Update/Delete TODOs function', () => {
         takeScreenshot(page, testInfo, testInfo.title);
     });
 
+    test('Mark Complete TODO sucessfully', async ({ page }, testInfo) => {
+        await clickCompleteButton(page, updatedTitle);
+        await verifyStatusItemUpdated(page, updatedTitle, true)
+        takeScreenshot(page, testInfo, testInfo.title);
+    });
+
+    test('Mark Incomplete TODO sucessfully', async ({ page }, testInfo) => {
+        await clickIncompleteButton(page, updatedTitle);
+        await verifyStatusItemUpdated(page, updatedTitle, false)
+        takeScreenshot(page, testInfo, testInfo.title);
+    });
+
     test('Delete TODO sucessfully', async ({ page }, testInfo) => {
         await clickDeleteButton(page, updatedTitle);
         await verifyItemRemovedFromList(page, updatedTitle);
@@ -44,13 +57,7 @@ test.describe.serial('Create/Update/Delete TODOs function', () => {
 }
 );
 
-// test.describe('Complete/Incomplete TODOs function', () => {
-//     test('Mark Complete TODO sucessfully', async ({ page }, testInfo) => {
-//         takeScreenshot(page, testInfo, testInfo.title);
-//     });
-
-//     test('Mark Incomplete TODO sucessfully', async ({ page }, testInfo) => {
-//         takeScreenshot(page, testInfo, testInfo.title);
-//     });
-// }
-// );
+test.describe.serial('Complete/Incomplete TODOs function', () => {
+    
+}
+);
